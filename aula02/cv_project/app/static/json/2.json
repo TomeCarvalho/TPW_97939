@@ -1,0 +1,86 @@
+{
+  "eurocv": {
+    "foto":  "foto2.jpg",
+    "desiredEmploy": "Translator",
+    "personalInfo": {
+      "name": {
+        "lastname": "Pereira",
+        "firstname": "Maria"
+      },
+      "address": {
+        "street": "Bairro Sousa Pinto",
+        "cp": "3000-393",
+        "local": "Coimbra",
+        "country": "Portugal"
+      },
+      "contact": {
+        "phone": {
+          "countryprefix": "351",
+          "number": "912345678"
+        },
+        "fax": {
+          "countryprefix": "351",
+          "number": "253123456"
+        },
+        "email": [
+          {
+            "type": "Professional",
+            "value": "mariapereira@idk.pt"
+          },
+          {
+            "type": "Personal",
+            "value": "mariapereira@gmail.com"
+          }
+        ]
+      },
+      "nacionality": "Portuguese",
+      "birthdate": {
+        "day": "27",
+        "month": "September",
+        "year": "1998"
+      },
+      "gender": "Female"
+    },
+    "workexperience": {
+      "position": {
+        "dates": {
+          "start": {
+            "month": "February",
+            "year": "2020"
+          },
+          "end": {
+            "month": "January",
+            "year": "2021"
+          }
+        },
+        "occupation": "Translator",
+        "activities": {
+          "activity": [
+            {
+              "designation": "Activity 1",
+              "time": "7 months"
+            },
+            {
+              "designation": "Activity 2",
+              "time": "4 months"
+            }
+          ]
+        },
+        "employer": {
+          "name": "Somecompany Translations",
+          "address": {
+            "street": "Somewhere",
+            "cp": "3000",
+            "local": "Coimbra",
+            "country": "Portugal"
+          },
+          "contact": {
+            "www": "www.somecompany.pt",
+            "email": "some@company.pt"
+          }
+        },
+        "businessSector": "Translation Sector"
+      }
+    }
+  }
+}
