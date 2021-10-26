@@ -1,0 +1,18 @@
+{% block content %}
+    <table>
+        <h1>Book #{{ book.id }}</h1>
+        <ul>
+            <li>Title: {{ book.title }}</li>
+            <li>Date: {{ book.date }}</li>
+            <li><a href="/publishers/{{ book.publisher_id }}">Publisher: {{ book.publisher.name }}</a></li>
+            <li>
+                Authors:
+                <ul>
+                    {% for author in book.authors.all %}
+                        <li><a href="/authors/{{ author.id }}">{{ author.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </table>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% block content %}
+    <table>
+        <h1>Publishers</h1>
+        <tr>
+            <th>Name</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Website</th>
+        </tr>
+        {% for publisher in publishers %}
+            <tr>
+                <td><a href="/publishers/{{ publisher.id }}">{{ publisher.name }}</a></td>
+                <td>{{ publisher.city }}</td>
+                <td>{{ publisher.country }}</td>
+                <td><a href="{{ publisher.website }}"></a>{{ publisher.website }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
