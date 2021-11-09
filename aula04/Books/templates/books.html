@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
 {% block content %}
-    <table class="table table-dark table-striped table-bordered">
+    <p>Search query: <strong>{{ query }}</strong></p>
+    {% if boks %}
+        <p>Found {{ boks|length }} book{{ boks|pluralize }}.</p>
+        <table class="table table-dark table-striped table-bordered">
         <h1 class="text-center">Books</h1>
         <tr>
             <th>Title</th>
@@ -8,17 +11,41 @@
             <th>Publisher</th>
             <th>Author(s)</th>
         </tr>
-        {% for book in books %}
+        {% for bok in boks %}
             <tr>
-                <td><a href="/books/{{ book.id }}">{{ book.title }}</a></td>
-                <td>{{ book.date }}</td>
-                <td><a href="/publishers/{{ book.publisher_id }}">{{ book.publisher.name }}</a></td>
+                <td><a href="/books/{{ bok.id }}">{{ bok.title }}</a></td>
+                <td>{{ bok.date }}</td>
+                <td><a href="/publishers/{{ bok.publisher_id }}">{{ bok.publisher.name }}</a></td>
                 <td>
-                    {% for author in book.authors.all %}
+                    {% for author in bok.authors.all %}
                         <a href="/authors/{{ author.id }}">{{ author.name }};</a>
                     {% endfor %}
                 </td>
             </tr>
         {% endfor %}
-    </table>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
 {% endblock %}
+{#    <table class="table table-dark table-striped table-bordered">#}
+{#        <h1 class="text-center">Books</h1>#}
+{#        <tr>#}
+{#            <th>Title</th>#}
+{#            <th>Date</th>#}
+{#            <th>Publisher</th>#}
+{#            <th>Author(s)</th>#}
+{#        </tr>#}
+{#        {% for book in books %}#}
+{#            <tr>#}
+{#                <td><a href="/books/{{ book.id }}">{{ book.title }}</a></td>#}
+{#                <td>{{ book.date }}</td>#}
+{#                <td><a href="/publishers/{{ book.publisher_id }}">{{ book.publisher.name }}</a></td>#}
+{#                <td>#}
+{#                    {% for author in book.authors.all %}#}
+{#                        <a href="/authors/{{ author.id }}">{{ author.name }};</a>#}
+{#                    {% endfor %}#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#    </table>#}
+
