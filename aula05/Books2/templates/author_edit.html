@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <p style="margin-inline: 1em">Editing Author #{{ author.id }}: {{ author.name }}</p>
+    {% if error %}
+        <p style="margin-inline: 1em">Error: fields can't be blank.</p>
+    {% endif %}
+    <form method="post" class="form-group" style="margin-inline: 1em">
+        {% csrf_token %}
+        <p>Name</p>
+        <input type="text" name="name" placeholder="{{ author.name }}">
+        <p>Email Address</p>
+        <input type="email" name="email" placeholder="{{ author.email }}">
+        <br>
+        <input type="submit" value="Edit" style="margin-top: 0.5em">
+    </form>
+{% endblock %}

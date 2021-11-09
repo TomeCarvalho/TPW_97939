@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="text-center">
+        <h3>Book #{{ book.id }}</h3>
+        <h2>{{ book.title }}</h2>
+        <div>
+            Published by <a href="/publishers/{{ book.publisher_id }}">{{ book.publisher.name }}</a>
+        </div>
+        <p>{{ book.date }}</p>
+        <p>Authored by:</p>
+        {% for author in book.authors.all %}
+            <p><a href="/authors/{{ author.id }}">{{ author.name }}</a></p>
+        {% endfor %}
+    </div>
+{% endblock %}

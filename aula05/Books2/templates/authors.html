@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+    <p>Search query: <strong>{{ query }}</strong></p>
+    {% if authors %}
+        <p>Found {{ authors|length }} author{{ authors|pluralize }}</p>
+        <table class="table table-dark table-striped table-bordered">
+            <h1 class="text-center">Authors</h1>
+            <tr>
+                <th>Name</th>
+                <th>Email Address</th>
+            </tr>
+            {% for author in authors %}
+                <tr>
+                    <td><a href="/authors/{{ author.id }}">{{ author.name }}</a></td>
+                    <td>{{ author.email }}</td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td><a href="/authors/add">+</a></td>
+            </tr>
+        </table>
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+{% endblock %}
