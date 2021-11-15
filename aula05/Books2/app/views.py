@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -110,16 +111,18 @@ def authorsearch(request):
     return render(request, 'authorsearch.html', {'error': False})
 
 
-def author_insert(request):
-    if 'name' not in request.POST or 'email' not in request.POST:
-        return render(request, 'author_insert.html', {'error': True})
-    name = request.POST['name']
-    email = request.POST['email']
-    Author(name=name, email=email).save()
-    return redirect(authors_page)
+# def author_insert(request):
+#     if 'name' not in request.POST or 'email' not in request.POST:
+#         return render(request, 'author_insert.html', {'error': True})
+#     name = request.POST['name']
+#     email = request.POST['email']
+#     Author(name=name, email=email).save()
+#     return redirect(authors_page)
 
 
 def author_edit(request, i):
+    if not request.user.is_authenticated or request.user.username != 'admin':
+        return redirect('/login')
     if 'name' not in request.POST or 'email' not in request.POST:
         return render(request, 'author_edit.html', {'error': True, 'author': Author.objects.get(id=i)})
     author = Author.objects.get(id=i)
@@ -131,3 +134,25 @@ def author_edit(request, i):
         author.save()
         return redirect(authors_page)
     return render(request, 'author_edit.html')
+
+
+def author_insert(request):
+    if not request.user.is_authenticated or request.user.username != 'admin':
+        return redirect('/login')
+    # if POST request, process form data
+    if request.method == 'POST':
+        # create form instance and pass data to it
+        form = AuthorInsForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            a = Author(name=name, email=email)
+            a.save()
+            return HttpResponse('<h1>Author Inserted</h1>')
+    # if GET (or any other method), create blank form
+    form = AuthorInsForm()
+    return render(request, 'author_insert.html', {'form': form})
+
+
+def root(request):
+    return redirect(books_page)
