@@ -1,0 +1,35 @@
+<h2>Publishers</h2>
+<ul class="authors">
+  <li *ngFor="let pub of publishers" (click)="onSelect(pub)">
+    <span class="badge"> {{pub.num}}</span> {{pub.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedPublisher">
+  <h2>Information on {{selectedPublisher.name | uppercase}}</h2>
+  <div><span>Num: </span>{{selectedPublisher.num}}</div>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="selectedPublisher.name" placeholder="name">
+    </label>
+  </div>
+  <div>
+    <label>City:
+      <input [(ngModel)]="selectedPublisher.city" placeholder="city">
+    </label>
+  </div>
+  <div>
+    <label>Country:
+      <input [(ngModel)]="selectedPublisher.country" placeholder="country">
+    </label>
+  </div>
+  <div>
+    <label>Website:
+      <input [(ngModel)]="selectedPublisher.website" placeholder="website">
+    </label>
+  </div>
+  <b>Authors</b>
+  <div *ngFor="let author of selectedPublisher.authors">
+    {{author.name}}
+  </div>
+</div>
