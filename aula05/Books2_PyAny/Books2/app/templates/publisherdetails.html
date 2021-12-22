@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+    <table>
+        <h1>Publisher #{{ publisher.id }}</h1>
+        <ul>
+            <li>Name: {{ publisher.name }}</li>
+            <li>City: {{ publisher.city }}</li>
+            <li>City: {{ publisher.country }}</li>
+            <li>Website: <a href="{{ publisher.website }}">{{ publisher.website }}</a></li>
+            <li>
+                Authors:
+                <ul>
+                    {% for author in publisher.authors %}
+                        <li><a href="/authors/{{ author.id }}">{{ author.name }}</a></li>
+                    {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </table>
+{% endblock %}

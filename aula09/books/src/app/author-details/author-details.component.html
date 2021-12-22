@@ -1,0 +1,22 @@
+<div *ngIf="author">
+  <h2>Information on {{author.name | uppercase}}</h2>
+  <div><span>Num: </span>{{author.num}}</div>
+  <div>
+    <label>Name:
+      <input [(ngModel)]="author.name" placeholder="name">
+    </label>
+  </div>
+  <div>
+    <label>Email:
+      <input [(ngModel)]="author.email" placeholder="email">
+    </label>
+  </div>
+  <div>
+    <label>Email:
+      <input [(ngModel)]="author.email" placeholder="email">
+    </label>
+  </div>
+  <br>
+  <button (click)="goBack()">Go Back</button>
+</div>
+

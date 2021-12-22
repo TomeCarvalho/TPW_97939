@@ -1,0 +1,19 @@
+{% extends 'layout.html' %}
+{% block content %}
+    {% if error %}
+        <p>ERROR: Insert a query term.</p>
+    {% endif %}
+    <form action="" method="post" class="form-group" style="margin-inline: 1em">
+        {% csrf_token %}
+        <p>Book Name</p>
+        <input type="text" name="book_name">
+        <p>Author Name</p>
+        <input type="text" name="author_name">
+        <p>Publisher Name</p>
+        <input type="text" name="publisher_name">
+        <br>
+        <input type="submit" value="Search" style="margin-top: 0.5em">
+        {#        <input type="text" name="query">#}
+        {#        <input type="submit" value="Search">#}
+    </form>
+{% endblock %}
